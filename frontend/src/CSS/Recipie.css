@@ -1,0 +1,32 @@
+.recipie-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .recipie-time {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+  }
+  
+  .ingredient-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .instruction {
+    white-space: pre-line;
+    background-color: #f9f9f9;
+    padding: 16px;
+    border-radius: 8px;
+    line-height: 1.6;
+  }
+  
