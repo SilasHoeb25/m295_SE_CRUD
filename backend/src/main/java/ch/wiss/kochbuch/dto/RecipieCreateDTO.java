@@ -17,13 +17,34 @@ public class RecipieCreateDTO {
         this.ingredients = ingredients;
     }
 
-    public String getName() { return name; }
-    public String getInstruction() { return instruction; }
-    public int getTimeToPrep() { return timeToPrep; }
-    public List<IngredientAmountDTO> getIngredients() { return ingredients; }
+    public String getName() {
+        return name; 
+    }
 
-    public void setName(String name) { this.name = name; }
-    public void setInstruction(String instruction) { this.instruction = instruction; }
-    public void setTimeToPrep(int timeToPrep) { this.timeToPrep = timeToPrep; }
-    public void setIngredients(List<IngredientAmountDTO> ingredients) { this.ingredients = ingredients; }
+    public String getInstruction() {
+        return instruction; 
+    }
+
+    public int getTimeToPrep() {
+        return timeToPrep; 
+    }
+
+    public List<IngredientAmountDTO> getIngredients() {
+        return ingredients; 
+    }
+
+    public void setName(String name) {
+        this.name = name; 
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction; 
+    }
+    public void setTimeToPrep(int timeToPrep) {
+        this.timeToPrep = timeToPrep; 
+    }
+
+    public void setIngredients(List<IngredientAmountDTO> ingredients) {
+         this.ingredients = ingredients; 
+    }
 }
