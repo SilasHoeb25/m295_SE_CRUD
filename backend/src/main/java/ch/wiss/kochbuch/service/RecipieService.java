@@ -60,17 +60,15 @@ public class RecipieService {
     }
 
 //UPDATE Recipie --------------------------------------------------------------
-@Transactional
+@Transactional //@Transactional Annotation macht die Datenbanktransaktion mit COMMIT und bei error ein ROLLBACK
 public Recipie updateRecipie(Long id, RecipieDTO dto) {
     Recipie existing = recipieRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Recipie not found"));
 
-    // Basisdaten aktualisieren
     existing.setName(dto.getName());
     existing.setInstruction(dto.getInstruction());
     existing.setTimeToPrep(dto.getTimeToPrep());
 
-    // Neue Zutatenliste vorbereiten
     List<RecipieIngredient> updatedLinks = new ArrayList<>();
 
     for (IngredientAmountDTO ingDTO : dto.getIngredients()) {
@@ -80,10 +78,7 @@ public Recipie updateRecipie(Long id, RecipieDTO dto) {
         updatedLinks.add(newLink);
     }
 
-    // Wichtig: zuerst alte Liste leeren, damit orphanRemoval greift
     existing.getRecipieIngredients().clear();
-
-    // Dann neue Liste hinzufügen
     existing.getRecipieIngredients().addAll(updatedLinks);
 
     return recipieRepository.save(existing);
@@ -112,7 +107,16 @@ public Recipie createRecipie(RecipieDTO recipieDTO) {
     return recipieRepository.save(recipie);
 }
 
-    public void deleteRecipie(Long id) {
-        recipieRepository.deleteById(id);
-    }
+//DELETE RECIPIE mit RecipieIngredient verknüpfung (Cascade.ALL im Controller)------------------
+@Transactional
+public void deleteRecipie(Long id) {
+    Recipie recipie = recipieRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Recipie not found with id: " + id));
+
+    // Optional, aber sauber: referenzierte Zutaten entfernen
+    recipie.getRecipieIngredients().clear();
+
+    // Jetzt wird durch orphanRemoval alles mitgelöscht
+    recipieRepository.delete(recipie);
+}
 }
