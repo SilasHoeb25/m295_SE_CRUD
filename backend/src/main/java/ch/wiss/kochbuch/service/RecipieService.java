@@ -32,12 +32,6 @@ public class RecipieService {
         return recipieRepository.findAll();
     }
 
-    public Recipie getById(Long id) {
-        return recipieRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Recipie not found"));
-    }
-
-
 //GET by ID with ALL Ingredients ------------------------------------------------
     public RecipieDTO getRecipieWithIngredients(Long id) {
         Recipie recipie = recipieRepository.findById(id)
