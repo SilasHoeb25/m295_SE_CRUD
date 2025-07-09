@@ -39,14 +39,6 @@ public class RecipieIngredientController {
                     return recipieIngredientRepository.save(ri);
                 }).orElse(null);
     }
-    @PutMapping("/test/{id}")
-    public RecipieIngredient updateTest(@PathVariable Long id, @RequestBody RecipieIngredient updated) {
-        return recipieIngredientRepository.findById(id)
-                .map(ri -> {
-                    ri.setAmount(updated.getAmount());
-                    return recipieIngredientRepository.save(ri);
-                }).orElse(null);
-    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
