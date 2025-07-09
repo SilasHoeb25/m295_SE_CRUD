@@ -59,7 +59,9 @@ public class RecipieService {
         );
     }
 
-    @Transactional
+//UPDATE Recipie --------------------------------------------------------------
+/*    
+@Transactional
     public Recipie updateRecipie(Long id, RecipieDTO dto) {
         Recipie existing = recipieRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Recipie not found"));
@@ -85,6 +87,89 @@ public class RecipieService {
     
         return recipieRepository.save(existing);
     }
+*/
+
+/* 
+@Transactional
+public Recipie updateRecipie(Long id, RecipieDTO dto) {
+    Recipie existing = recipieRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Recipie not found"));
+
+    // Rezept-Basisdaten aktualisieren
+    existing.setName(dto.getName());
+    existing.setInstruction(dto.getInstruction());
+    existing.setTimeToPrep(dto.getTimeToPrep());
+
+    // Bestehende Verknüpfungen holen
+    List<RecipieIngredient> existingLinks = recipieIngredientRepository.findByRecipie(existing);
+
+    // Neue Zutaten aus DTO vorbereiten
+    List<RecipieIngredient> updatedLinks = new ArrayList<>();
+
+    for (IngredientAmountDTO ingDTO : dto.getIngredients()) {
+        Ingredient ingredient = ingredientService.getOrCreateIngredientByName(ingDTO.getName());
+
+        // Prüfen ob diese Zutat schon existiert (für dieses Rezept)
+        RecipieIngredient existingLink = existingLinks.stream()
+            .filter(link -> link.getIngredient().getName().equalsIgnoreCase(ingredient.getName()))
+            .findFirst()
+            .orElse(null);
+
+        if (existingLink != null) {
+            // Menge aktualisieren (falls sie sich geändert hat)
+            existingLink.setAmount(ingDTO.getAmount());
+            updatedLinks.add(existingLink);
+        } else {
+            // Neue Verknüpfung anlegen
+            RecipieIngredient newLink = new RecipieIngredient(existing, ingredient, ingDTO.getAmount());
+            updatedLinks.add(newLink);
+        }
+    }
+
+    // Verknüpfungen entfernen, die nicht mehr vorkommen
+    for (RecipieIngredient oldLink : existingLinks) {
+        boolean stillUsed = updatedLinks.stream()
+            .anyMatch(link -> link.getIngredient().getName().equalsIgnoreCase(oldLink.getIngredient().getName()));
+        if (!stillUsed) {
+            recipieIngredientRepository.delete(oldLink);
+        }
+    }
+
+    existing.setRecipieIngredients(updatedLinks);
+
+    return recipieRepository.save(existing);
+}
+*/
+
+@Transactional
+public Recipie updateRecipie(Long id, RecipieDTO dto) {
+    Recipie existing = recipieRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Recipie not found"));
+
+    // Basisdaten aktualisieren
+    existing.setName(dto.getName());
+    existing.setInstruction(dto.getInstruction());
+    existing.setTimeToPrep(dto.getTimeToPrep());
+
+    // Neue Zutatenliste vorbereiten
+    List<RecipieIngredient> updatedLinks = new ArrayList<>();
+
+    for (IngredientAmountDTO ingDTO : dto.getIngredients()) {
+        Ingredient ingredient = ingredientService.getOrCreateIngredientByName(ingDTO.getName());
+
+        RecipieIngredient newLink = new RecipieIngredient(existing, ingredient, ingDTO.getAmount());
+        updatedLinks.add(newLink);
+    }
+
+    // Wichtig: zuerst alte Liste leeren, damit orphanRemoval greift
+    existing.getRecipieIngredients().clear();
+
+    // Dann neue Liste hinzufügen
+    existing.getRecipieIngredients().addAll(updatedLinks);
+
+    return recipieRepository.save(existing);
+}
+
 
     
 // POST RECIPIE WITH INGREDIENT AND AMOUNTS ----------------------------------------------------------
@@ -93,6 +178,7 @@ public Recipie createRecipie(RecipieDTO recipieDTO) {
     recipie.setName(recipieDTO.getName());
     recipie.setInstruction(recipieDTO.getInstruction());
     recipie.setTimeToPrep(recipieDTO.getTimeToPrep());
+
 
     List<RecipieIngredient> recipieIngredients = new ArrayList<>();
 

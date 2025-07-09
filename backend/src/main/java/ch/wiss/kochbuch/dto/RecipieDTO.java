@@ -7,8 +7,6 @@ public class RecipieDTO {
     private String name;
     private String instruction;
     private int timeToPrep;
-
-
     private List<IngredientAmountDTO> ingredients;
 
 //Constructor ------------------------------------------------------------------------
