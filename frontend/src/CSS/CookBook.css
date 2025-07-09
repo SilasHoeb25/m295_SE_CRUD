@@ -1,46 +1,29 @@
 .cookbook-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 0 20px;
+    padding: 20px;
+    font-family: Arial, sans-serif;
   }
   
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
+  .recipie-list {
+    list-style: none;
+    padding: 0;
   }
   
   .recipie-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f6f6f6;
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
   }
   
   .recipie-item:hover {
-    background-color: #ececec;
+    background-color: #f9f9f9;
   }
   
-  .recipie-info {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .recipie-name {
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
-  .recipie-time {
-    font-size: 0.95rem;
-    color: #555;
-  }
-  
-  .recipie-buttons {
+  .buttons {
     display: flex;
     gap: 10px;
   }
