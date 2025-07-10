@@ -1,0 +1,16 @@
+.recipie-edit-container {
+    margin: 20px;
+  }
+  
+  .recipie-edit-container label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  .recipie-edit-container input,
+  .recipie-edit-container textarea {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+  
