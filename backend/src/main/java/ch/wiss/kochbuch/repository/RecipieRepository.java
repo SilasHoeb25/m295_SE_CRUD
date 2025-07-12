@@ -5,5 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ch.wiss.kochbuch.model.Recipie;
 
 public interface RecipieRepository extends JpaRepository<Recipie, Long> {
+  List<Recipie> findAllByOrderByNameAsc();
   List<Recipie> findByNameContaining(String name);
 }

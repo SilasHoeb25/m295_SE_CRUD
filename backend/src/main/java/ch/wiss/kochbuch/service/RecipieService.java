@@ -30,7 +30,7 @@ public class RecipieService {
 
 // GET ALL Recipies WITH IngredientAmount -----------------------------------------------------
     public List<RecipieDTO> getAllRecipieDTOs() {
-        List<Recipie> recipies = recipieRepository.findAll();
+        List<Recipie> recipies = recipieRepository.findAllByOrderByNameAsc();
     
         return recipies.stream().map(recipie -> {
             List<IngredientAmountDTO> ingredientDTOs = recipie.getRecipieIngredients()
