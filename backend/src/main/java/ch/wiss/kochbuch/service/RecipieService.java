@@ -32,6 +32,11 @@ public class RecipieService {
         return recipieRepository.findAll();
     }
 
+//TODO
+    public List<Recipie> filterRecipies() {
+        return recipieRepository.findAll();
+    }
+
 //GET by ID with ALL Ingredients ------------------------------------------------
     public RecipieDTO getRecipieWithIngredients(Long id) {
         Recipie recipie = recipieRepository.findById(id)
@@ -101,7 +106,7 @@ public Recipie createRecipie(RecipieDTO recipieDTO) {
     return recipieRepository.save(recipie);
 }
 
-//DELETE RECIPIE mit RecipieIngredient verknüpfung (Cascade.ALL im Controller)------------------
+//DELETE RECIPIE with RecipieIngredient Link (--> Cascade.ALL im Controller)------------------
 @Transactional
 public void deleteRecipie(Long id) {
     Recipie recipie = recipieRepository.findById(id)

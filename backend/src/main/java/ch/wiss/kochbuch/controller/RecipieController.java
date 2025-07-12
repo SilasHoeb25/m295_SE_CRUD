@@ -26,6 +26,11 @@ public class RecipieController {
     public List<Recipie> getAll() {
         return recipieService.getAllRecipies();
     }
+    //TODO
+    @GetMapping("/search")
+    public List<Recipie> searchRecipies() {
+        return recipieService.filterRecipies();
+    }
 
     @GetMapping("/{id}")
     public RecipieDTO getRecipieWithIngredients(@PathVariable Long id) {
