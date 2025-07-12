@@ -174,8 +174,8 @@ One `Ingredient` → can be part of many `RecipieIngredient`
 ### Environment
 - React + Vite
 - Spring Boot + Maven
-- MongoDB via Docker
-- Tools: Postman, JUnit, Jest, React Testing Library
+- MySQL Database
+- Tools: Insomnia, JUnit, Jest, React Testing Library
 
 ---
 
