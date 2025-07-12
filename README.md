@@ -179,7 +179,7 @@ One `Ingredient` → can be part of many `RecipieIngredient`
 
 ---
 
-### 6.1 Manual API Testing (Postman)
+### 6.1 Manual API Testing (Insomnia)
 
 | Test ID | Endpoint             | Description             | Expected Result     |
 |--------|----------------------|-------------------------|---------------------|
