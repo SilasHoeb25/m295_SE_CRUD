@@ -23,13 +23,8 @@ public class RecipieController {
     }
 
     @GetMapping
-    public List<Recipie> getAll() {
-        return recipieService.getAllRecipies();
-    }
-    //TODO
-    @GetMapping("/search")
-    public List<Recipie> searchRecipies() {
-        return recipieService.filterRecipies();
+    public List<RecipieDTO> getAllRecipies() {
+        return recipieService.getAllRecipieDTOs();
     }
 
     @GetMapping("/{id}")

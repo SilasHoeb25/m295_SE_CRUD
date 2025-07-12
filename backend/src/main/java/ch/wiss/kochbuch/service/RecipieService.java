@@ -28,16 +28,33 @@ public class RecipieService {
         this.recipieIngredientRepository = recipieIngredientRepository;
     }
 
-    public List<Recipie> getAllRecipies() {
-        return recipieRepository.findAll();
+// GET ALL Recipies WITH IngredientAmount -----------------------------------------------------
+    public List<RecipieDTO> getAllRecipieDTOs() {
+        List<Recipie> recipies = recipieRepository.findAll();
+    
+        return recipies.stream().map(recipie -> {
+            List<IngredientAmountDTO> ingredientDTOs = recipie.getRecipieIngredients()
+                .stream()
+                .map(ri -> new IngredientAmountDTO(
+                    ri.getIngredient().getName(),
+                    ri.getAmount()
+                ))
+                .collect(Collectors.toList());
+    
+            return new RecipieDTO(
+                recipie.getId(),
+                recipie.getName(),
+                recipie.getInstruction(),
+                recipie.getTimeToPrep(),
+                ingredientDTOs
+            );
+        }).collect(Collectors.toList());
     }
+    
 
-//TODO
-    public List<Recipie> filterRecipies() {
-        return recipieRepository.findAll();
-    }
 
-//GET by ID with ALL Ingredients ------------------------------------------------
+
+//GET by ID with ALL IngredientAmount ------------------------------------------------
     public RecipieDTO getRecipieWithIngredients(Long id) {
         Recipie recipie = recipieRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Recipie not found"));
@@ -85,7 +102,7 @@ public Recipie updateRecipie(Long id, RecipieDTO dto) {
 
 
     
-// POST RECIPIE WITH INGREDIENT AND AMOUNTS ----------------------------------------------------------
+// POST Recipie WITH IngredientAmount ----------------------------------------------------------
 public Recipie createRecipie(RecipieDTO recipieDTO) {
     Recipie recipie = new Recipie();
     recipie.setName(recipieDTO.getName());
