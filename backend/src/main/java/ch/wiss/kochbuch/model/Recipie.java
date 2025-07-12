@@ -32,7 +32,7 @@ public class Recipie {
     private int timeToPrep;
 
     //Relations
-    @OneToMany(mappedBy = "recipie", cascade = CascadeType.ALL, orphanRemoval = true) //Bei verwendung von JPA | CascadeType.ALL: Alle Zutaten werden mit dem Rezept gespeichert | orphanRemoval = true: damit gelöschte Zutaten auch aus der DB verschwinden
+    @OneToMany(mappedBy = "recipie", cascade = CascadeType.ALL, orphanRemoval = true) // CascadeType.ALL: Alle Zutaten werden mit dem Rezept gespeichert | orphanRemoval = true: damit gelöschte Zutaten verknüpfungen auch aus der DB verschwinden
     @JsonBackReference
     private List<RecipieIngredient> recipieIngredients;
 
