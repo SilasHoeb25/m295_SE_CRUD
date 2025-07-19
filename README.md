@@ -2,6 +2,122 @@
 
 Dieses Dokument enthält die vollständige Dokumentation der **Kochbuch**-Applikation, erstellt im Rahmen der Module **M294 (Frontend)** und **M295 (Backend)**.
 
+## Voraussetzungen
+
+- **Java 21**
+- **Maven 3.9.10**
+- **Node.js**
+- **npm** (wird mit Node.js installiert)
+- **Git** (Github Account)
+- **IDE** (am besten VSCode oder Codium)
+- **MySQL Workbench**
+
+Um Java, Maven, Node.js und Git zu installieren, empfiehlt es sich, den Chocolatey Package Manager zu nutzen.
+
+Weitere Details findest du unter: https://chocolatey.org/
+
+Nach der Installation über Chocolatey, kannst du mit folgenden Befehlen im Windows Terminal (cmd) prüfen, ob die Software und die korrekten Versionen davon installiert sind:
+
+```bash
+java --version
+```
+
+```bash
+mvn -v
+```
+
+```bash
+node -v
+```
+
+```bash
+npm -v
+```
+
+```bash
+git --version
+```
+
+---
+
+## 1. Repository klonen
+
+Öffne ein Terminal und führe folgenden Befehl aus:
+
+```bash
+git clone https://github.com/SilasHoeb25/m295_SE_CRUD.git
+```
+
+---
+
+
+## Installationsanleitung
+
+### 1. MySQL-Datenbank erstellen
+
+Um das Projekt lokal starten zu können, wird eine MySQL-Datenbank benötigt. Gehe wie folgt vor:
+
+- Erstelle eine neue lokale MySQL-Instanz (z. B. mit **XAMPP**, **MySQL Workbench** oder **Docker**).
+- Die Zugangsdaten sollten wie folgt lauten:
+
+  ```bash
+  Benutzername: root
+  Passwort: Test.123
+
+ Öffne dein SQL-Tool oder ein Terminal und führe folgenden SQL-Befehl aus, um die Datenbank zu erstellen:
+
+    CREATE DATABASE kochbuch;
+
+### 2. Backend starten
+
+Öffne ein Terminal (CMD)
+
+Navigiere ins Backend-Verzeichnis:
+  ```
+  cd backend
+  ```
+Starte die Spring Boot Anwendung:
+```
+mvn spring-boot:run
+```
+
+Sollte die Verbindung zur Datenbank fehlschlagen:
+
+    Öffne die Datei:
+
+backend/src/main/resources/application.properties
+
+Überprüfe, ob Benutzername, Passwort und Port korrekt sind:
+        
+        spring.datasource.url=jdbc:mysql://localhost:3306/kochbuch
+        spring.datasource.username=root
+        spring.datasource.password=Test.123
+        
+
+### 3. Frontend starten
+
+Öffne ein neues Terminal-Fenster.
+
+Navigiere ins Frontend-Verzeichnis:
+```
+cd frontend
+```
+Installiere die benötigten Abhängigkeiten:
+```
+npm install
+```
+Starte das Frontend im Entwicklungsmodus:
+```
+npm run dev
+```
+Danach kannst du die App im Browser aufrufen unter:
+
+http://localhost:5173
+
+Das Backend läuft unter: 
+http://localhost:8080
+
+
 ---
 
 ## 1. Projektidee
@@ -31,7 +147,7 @@ Diese App löst dieses Problem, indem strukturierte Rezepte digital verwaltet we
 
 ---
 
-### UI/UX-Funktionsablauf (Frontend-Verhalten)
+### Funktionsablauf (Frontend-Verhalten)
 
 #### Rezeptübersicht
 - Alle erstellten Rezepte werden in einer Kartenansicht angezeigt.
@@ -43,7 +159,7 @@ Diese App löst dieses Problem, indem strukturierte Rezepte digital verwaltet we
   - Titel
   - Beschreibung
   - Dynamische Zutatenliste mit Name und Menge
-- Buttons zum Speichern, Abbrechen und Zutaten hinzufügen.
+- Buttons zum Speichern, Löschen und Zutaten hinzufügen.
 - Validierung der Pflichtfelder vor dem Absenden.
 
 #### Rezept-Details
@@ -111,6 +227,8 @@ Diese App löst dieses Problem, indem strukturierte Rezepte digital verwaltet we
 ---
 
 ## 4. Klassendiagramm
+
+Eine detailierte Übersicht mit Diagramm befindet sich im Ordner "Dokumentation"
 
 ### Entitäten & Beziehungen
 
