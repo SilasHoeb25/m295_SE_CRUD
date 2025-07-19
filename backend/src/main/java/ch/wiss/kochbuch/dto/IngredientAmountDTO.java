@@ -5,6 +5,10 @@ public class IngredientAmountDTO {
     private String amount;
 
 //Constructor ------------------------------------------------------------------------
+    public IngredientAmountDTO() {
+    // Leerer Konstruktor für das initiale Laden von recipies.json
+    }
+    
     public IngredientAmountDTO(String name, String amount) {
         this.name = name;
         this.amount = amount;
