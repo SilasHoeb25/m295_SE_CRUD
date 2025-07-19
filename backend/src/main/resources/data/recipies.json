@@ -1,0 +1,53 @@
+[
+    {
+      "name": "Spaghetti Code",
+      "instruction": "Frage ChatGPT nach den Code-Anpassungen.",
+      "timeToPrep": 200,
+      "ingredients": [
+        { "name": "Anfänger", "amount": "1 Stück" },
+        { "name": "KI", "amount": "1 Stück" },
+        { "name": "Wissen", "amount": "1 von 10" }
+      ]
+    },
+    {
+      "name": "Debugger Auflauf",
+      "instruction": "Schrittweise jeden Breakpoint prüfen, abschmecken mit Logs.",
+      "timeToPrep": 90,
+      "ingredients": [
+        { "name": "Fehlermeldung", "amount": "3 Zeilen" },
+        { "name": "Geduld", "amount": "2 Esslöffel" },
+        { "name": "Stacktrace", "amount": "1 Portion" }
+      ]
+    },
+    {
+      "name": "Commit-Suppe",
+      "instruction": "Alles zusammenwerfen, abschmecken und mit Git pushen.",
+      "timeToPrep": 45,
+      "ingredients": [
+        { "name": "Codeänderungen", "amount": "5 Dateien" },
+        { "name": "Commit-Message", "amount": "1 gute Idee" },
+        { "name": "Branch", "amount": "1 Feature" }
+      ]
+    },
+    {
+      "name": "Merge-Konflikt-Gratin",
+      "instruction": "Langsam zusammenführen und Konflikte schmelzen lassen.",
+      "timeToPrep": 120,
+      "ingredients": [
+        { "name": "Master", "amount": "1 Hauptlinie" },
+        { "name": "Feature-Branch", "amount": "1 Stück" },
+        { "name": "Konflikte", "amount": "2 Stück" }
+      ]
+    },
+    {
+      "name": "Unit-Test Tiramisu",
+      "instruction": "Mehrere Schichten Logik testen und ruhen lassen.",
+      "timeToPrep": 60,
+      "ingredients": [
+        { "name": "JUnit", "amount": "1 Paket" },
+        { "name": "Assertions", "amount": "5 Stück" },
+        { "name": "Mocking", "amount": "1 Prise" }
+      ]
+    }
+  ]
+  

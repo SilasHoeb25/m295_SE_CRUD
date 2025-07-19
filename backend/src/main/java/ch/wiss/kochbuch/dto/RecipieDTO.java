@@ -10,6 +10,10 @@ public class RecipieDTO {
     private List<IngredientAmountDTO> ingredients;
 
 //Constructor ------------------------------------------------------------------------
+    public RecipieDTO() {
+    // Leerer Konstruktor für das initialle laden von recipies.json
+    }
+
     public RecipieDTO(Long id, String name, String instruction, int timeToPrep, List<IngredientAmountDTO> ingredients) {
         this.id = id;
         this.name = name;
