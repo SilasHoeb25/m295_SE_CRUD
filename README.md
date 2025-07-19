@@ -213,12 +213,20 @@ One `Ingredient` → can be part of many `RecipieIngredient`
 
 ## 7. Installation Instructions
 
+### Database Setup
+
+1. Run MySQL
+2. Query:
+```bash
+CREATE DATABASE kochbuch;
+```
+
 ### Backend Setup
 
 1. Navigate to `/backend`
 2. Run:
 ```bash
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 
 ### Frontend Setup
